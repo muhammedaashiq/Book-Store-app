@@ -20,15 +20,14 @@ app.use(cors())
 
 app.use('/books', bookRoute)
 
-app.listen(PORT, ()=> {
-    console.log(`App is listening to port ${PORT}`)
-})
-
 mongoose
     .connect(mongoURL)
     .then(()=>{
         console.log("App connected to database")
+        app.listen(PORT, ()=> {
+            console.log(`App is listening to port ${PORT}`)
+        })
     })
     .catch((err) => {
-        console.log(err);
+        console.error(err);
     })

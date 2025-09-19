@@ -8,7 +8,6 @@ Router.get('/',async (req,res)=>{
     try{
         const books = await Book.find({});
         return res.status(201).json({
-            count: books.length,
             books: books
         })
     }catch(err){
